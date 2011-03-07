@@ -1,0 +1,56 @@
+== BreweryDB API
+
+This is a simple wrapper around the BreweryDB API packaged as a ruby gem.
+
+* Wraps all the API documented here: http://www.brewerydb.com/api/documentation
+* You will need to register for an API key: http://www.brewerydb.com/api/register
+* ALPHA - no tests yet, works but could/might/will change
+
+In Rails, you can configure it with initializer by creating a file
+named config/initializers/brewerydb.rb
+
+  BreweryDb.configure do |config|
+    config.apikey = 'c01822f029486661bb3669a845b5ec14'
+  end
+
+== Examples
+
+You can fetch beers:
+
+  response = BreweryDb.beers
+    response['beer'].each do |beer|
+     puts "#{beer['id']}: #{beer['name']}"
+  end
+  puts response['pages']['page']
+  puts response['pages']['total']
+
+Get a list of beers on a specific page:
+
+  response = BreweryDb.beers(:page => 10, :metadata => true) 
+  response['beer'].each do |beer|
+      puts "#{beer['id']}: #{beer['name']}"
+  end
+
+Get a specific beer or brewery by id:
+
+  response = BreweryDb.beer(1196)
+  puts response['name']
+
+  response = BreweryDb.brewery(1000)
+  puts response['name']
+
+Get all the breweries around Washington DC:
+
+  response = BreweryDb.breweries(:geo => 1,
+                                 :lat => 38.875532,
+                                 :lng => -77.007294,
+                                 :radius => 30,
+                                 :units => 'm')
+  response['brewery'].each do |brewery|
+    puts brewery['name']
+  end
+
+  puts response['pages']['page']
+  puts response['pages']['total']
+
+
