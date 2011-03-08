@@ -4,7 +4,7 @@ This is a simple wrapper around the BreweryDB API packaged as a ruby gem.
 
 * Wraps all the API documented here: http://www.brewerydb.com/api/documentation
 * You will need to register for an API key: http://www.brewerydb.com/api/register
-* ALPHA - no tests yet, works but could/might/will change
+* You can pass any of the options specified in the BreweryDB API
 
 In Rails, you can configure it with initializer by creating a file
 named config/initializers/brewerydb.rb
@@ -12,6 +12,8 @@ named config/initializers/brewerydb.rb
   BreweryDb.configure do |config|
     config.apikey = 'c01822f029486661bb3669a845b5ec14'
   end
+
+Remember: Good People Drink Good Beer!
 
 == Examples
 
