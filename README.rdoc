@@ -22,6 +22,7 @@ You can fetch beers:
   response = BreweryDb.beers
     response['beer'].each do |beer|
      puts "#{beer['id']}: #{beer['name']}"
+    end
   end
   puts response['pages']['page']
   puts response['pages']['total']
@@ -30,7 +31,7 @@ Get a list of beers on a specific page:
 
   response = BreweryDb.beers(:page => 10, :metadata => true) 
   response['beer'].each do |beer|
-      puts "#{beer['id']}: #{beer['name']}"
+    puts "#{beer['id']}: #{beer['name']}"
   end
 
 Get a specific beer or brewery by id:
@@ -55,4 +56,4 @@ Get all the breweries around Washington DC:
   puts response['pages']['page']
   puts response['pages']['total']
 
-
+Categories, Styles and Glassware work as well.
