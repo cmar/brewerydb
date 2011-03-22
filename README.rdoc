@@ -17,6 +17,9 @@ Remember: Good People Drink Good Beer!
 
 == Releases
 
+0.0.4
+* properly documenting the hashie dependency
+
 0.0.3
 * we return Hashie::Mash objects, so you can access the properties using .notation
 * search endpoint enabled
