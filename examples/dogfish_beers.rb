@@ -5,14 +5,15 @@ require 'brewerydb'
 # set your API KEY
 
 BreweryDb.configure do |config|
-	  config.apikey = 'XX'
+	  config.apikey = 'YOUR_API_KEY'
 end
 
 # Get all the DogFish Head Beers
-beers = BreweryDb.beers(:brewery_id => 459)
-beers['beer'].each do |beer|
-  puts beer['name']
+results = BreweryDb.beers(:brewery_id => 459)
+
+results.beer.each do |beer|
+  puts beer.name
 end
 
-puts "Page: #{beers['pages']['page']}"
-puts "Total: #{beers['pages']['total']}" 
+puts "Page: #{results.pages.page}"
+puts "Total: #{results.pages.total}"

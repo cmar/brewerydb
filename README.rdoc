@@ -10,37 +10,50 @@ In Rails, you can configure it with initializer by creating a file
 named config/initializers/brewerydb.rb
 
   BreweryDb.configure do |config|
-    config.apikey = 'c01822f029486661bb3669a845b5ec14'
+    config.apikey = 'YOUR_API_KEY'
   end
 
 Remember: Good People Drink Good Beer!
+
+== Releases
+
+0.0.3
+* we return Hashie::Mash objects, so you can access the properties using .notation
+* search endpoint enabled
+
+0.0.2
+* fully functional for all end points
+
+0.0.1
+* initial release
 
 == Examples
 
 You can fetch beers:
 
   response = BreweryDb.beers
-    response['beer'].each do |beer|
-     puts "#{beer['id']}: #{beer['name']}"
-    end
-  end
-  puts response['pages']['page']
-  puts response['pages']['total']
+  
+  response.beer.each do |beer|
+    puts "#{beer.id}: #{beer.name}"
+  end if response.beer
+  
+  puts response.pages.page
+  puts response.pages.total
 
 Get a list of beers on a specific page:
 
   response = BreweryDb.beers(:page => 10, :metadata => true) 
-  response['beer'].each do |beer|
-    puts "#{beer['id']}: #{beer['name']}"
-  end
+  response.beer.each do |beer|
+    puts "#{beer.id}: #{beer.name}"
+  end if response.beer
 
 Get a specific beer or brewery by id:
 
   response = BreweryDb.beer(1196)
-  puts response['name']
+  puts response.name
 
   response = BreweryDb.brewery(1000)
-  puts response['name']
+  puts response.name
 
 Get all the breweries around Washington DC:
 
@@ -49,11 +62,13 @@ Get all the breweries around Washington DC:
                                  :lng => -77.007294,
                                  :radius => 30,
                                  :units => 'm')
-  response['brewery'].each do |brewery|
-    puts brewery['name']
-  end
+  response.brewery.each do |brewery|
+    puts brewery.name
+  end if response.brewery
 
-  puts response['pages']['page']
-  puts response['pages']['total']
+  puts response.pages.page
+  puts response.pages.total
 
 Categories, Styles and Glassware work as well.
+
+Additional working examples are in the examples directory
