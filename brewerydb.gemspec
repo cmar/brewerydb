@@ -7,8 +7,8 @@ Gem::Specification.new do |s|
   s.version     = Brewerydb::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Chris Mar"]
-  s.email       = ["chris@hopshunter.com"]
-  s.homepage    = "http://www.hopshunter.com"
+  s.email       = ["chris@cmar.me"]
+  s.homepage    = "https://github.com/cmar/brewerydb"
   s.summary     = %q{Simple Wrapper around the BreweryDB API}
   s.description = %q{Free Beer data. You'll need an api key.}
 

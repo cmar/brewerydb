@@ -50,6 +50,15 @@ Get a list of beers on a specific page:
     puts "#{beer.id}: #{beer.name}"
   end if response.beer
 
+Searching for Beers
+  results = BreweryDb.search(:q => 'stone')
+  results.result.each do |result|
+    puts "#{result.id}: #{result.name} (#{result['type']})"
+  end if results.result #check if there is a result before looping
+
+  puts "Page: #{results.pages.page}"
+  puts "Total: #{results.pages.total}"
+
 Get a specific beer or brewery by id:
 
   response = BreweryDb.beer(1196)
