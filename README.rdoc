@@ -1,3 +1,5 @@
+Note: This is branch v1-api, it supports BreweryDB v1 API
+
 == BreweryDB API
 
 This is a simple wrapper around the BreweryDB API packaged as a ruby gem.
@@ -35,17 +37,17 @@ Remember: Good People Drink Good Beer!
 You can fetch beers:
 
   response = BreweryDb.beers
-  
+
   response.beer.each do |beer|
     puts "#{beer.id}: #{beer.name}"
   end if response.beer
-  
+
   puts response.pages.page
   puts response.pages.total
 
 Get a list of beers on a specific page:
 
-  response = BreweryDb.beers(:page => 10, :metadata => true) 
+  response = BreweryDb.beers(:page => 10, :metadata => true)
   response.beer.each do |beer|
     puts "#{beer.id}: #{beer.name}"
   end if response.beer
