@@ -14,6 +14,15 @@ class BreweryDb
   default_params :format => 'JSON'
   @@apikey = nil
 
+  def self.heartbeat(options={})
+    options.merge!({
+      :key => apikey
+      })
+
+    response = get("/heartbeat", :query => options)
+    Hashie::Mash.new(response)['data'] if response.code == 200
+  end
+
   def self.search(options={})
     options.merge!({
       :key => apikey
@@ -112,6 +121,72 @@ class BreweryDb
     response = get("/glass/#{id}", :query => options)
     Hashie::Mash.new(response)['data'] if response.code == 200
   end
+
+  def self.events(options={})
+    options.merge!({
+      :key => apikey
+    })
+
+    response = get("/events", :query => options)
+    Hashie::Mash.new(response)['data'] if response.code == 200
+  end
+
+  def self.event(id, options={})
+    options.merge!({
+      :key => apikey
+    })
+
+    response = get("/event/#{id}", :query => options)
+    Hashie::Mash.new(response)['data'] if response.code == 200
+  end
+
+  def self.featured(options={})
+    options.merge!({
+      :key => apikey
+    })
+
+    response = get("/featured", :query => options)
+    Hashie::Mash.new(response)['data'] if response.code == 200
+  end
+
+  def self.features(options={})
+    options.merge!({
+      :key => apikey
+    })
+
+    response = get("/features", :query => options)
+    Hashie::Mash.new(response)['data'] if response.code == 200
+  end
+
+
+  def self.feature(id, options={})
+    options.merge!({
+      :key => apikey
+    })
+
+    response = get("/feature/#{id}", :query => options)
+    Hashie::Mash.new(response)['data'] if response.code == 200
+  end
+
+  def self.fluidsizes(options={})
+    options.merge!({
+      :key => apikey
+    })
+
+    response = get("/fluidsizes", :query => options)
+    Hashie::Mash.new(response)['data'] if response.code == 200
+  end
+
+
+  def self.fluidsize(id, options={})
+    options.merge!({
+      :key => apikey
+    })
+
+    response = get("/fluidsize/#{id}", :query => options)
+    Hashie::Mash.new(response)['data'] if response.code == 200
+  end
+
 
   def self.apikey
     @@apikey
