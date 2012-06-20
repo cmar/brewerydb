@@ -187,6 +187,81 @@ class BreweryDb
     Hashie::Mash.new(response)['data'] if response.code == 200
   end
 
+  def self.guilds(options={})
+    options.merge!({
+      :key => apikey
+    })
+
+    response = get("/guilds", :query => options)
+    Hashie::Mash.new(response)['data'] if response.code == 200
+  end
+
+
+  def self.guild(id, options={})
+    options.merge!({
+      :key => apikey
+    })
+
+    response = get("/guild/#{id}", :query => options)
+    Hashie::Mash.new(response)['data'] if response.code == 200
+  end
+
+  def self.ingredients(options={})
+    options.merge!({
+      :key => apikey
+    })
+
+    response = get("/ingredients", :query => options)
+    Hashie::Mash.new(response)['data'] if response.code == 200
+  end
+
+
+  def self.ingredient(id, options={})
+    options.merge!({
+      :key => apikey
+    })
+
+    response = get("/ingredient/#{id}", :query => options)
+    Hashie::Mash.new(response)['data'] if response.code == 200
+  end
+
+  def self.locations(options={})
+    options.merge!({
+      :key => apikey
+    })
+
+    response = get("/locations", :query => options)
+    Hashie::Mash.new(response)['data'] if response.code == 200
+  end
+
+
+  def self.location(id, options={})
+    options.merge!({
+      :key => apikey
+    })
+
+    response = get("/location/#{id}", :query => options)
+    Hashie::Mash.new(response)['data'] if response.code == 200
+  end
+
+  def self.socialsites(options={})
+    options.merge!({
+      :key => apikey
+    })
+
+    response = get("/socialsites", :query => options)
+    Hashie::Mash.new(response)['data'] if response.code == 200
+  end
+
+
+  def self.socialsite(id, options={})
+    options.merge!({
+      :key => apikey
+    })
+
+    response = get("/socialsite/#{id}", :query => options)
+    Hashie::Mash.new(response)['data'] if response.code == 200
+  end
 
   def self.apikey
     @@apikey
